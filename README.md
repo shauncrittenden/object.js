@@ -1,6 +1,7 @@
 #Object.js
 
 Base javascript object
+
 A starting framework for a clean object oriented piece of functionality. Minor dependancy on jQuery for initialization on DOM ready and selection of DOM elements.
 
 --------------------------
