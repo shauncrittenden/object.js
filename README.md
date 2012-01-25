@@ -31,4 +31,4 @@ Example use of object settings
 
 --------------------------
 
-Object methods assign code(this) reference to code(self) to work around namespace issues.
+Object methods assign `this` reference to `self` to work around namespace issues.
