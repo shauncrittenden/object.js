@@ -7,8 +7,7 @@ function TheObject(a){
 	
 	// settings
 	this.settings = {
-	    prefix : '',
-	    suffix : '!'
+	    speed : 500
 	};
 	
 	this._init();
