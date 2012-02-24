@@ -1,13 +1,13 @@
-function TheObject(a){
+function TheObject(args){
 	// DOM elements
-	this.wrapper = a.element;
+	this.instance = $(args.instance);
 	
-	// data
-	this.identifier = a.identifier;
+	// Data
+	this.identifier = args.identifier;
 	
-	// settings
+	// Settings
 	this.settings = {
-	    speed : 500
+	    message : 'ouch!'
 	};
 	
 	this._init();
@@ -15,41 +15,39 @@ function TheObject(a){
 
 
 TheObject.prototype._init = function(){
-    var self = this;
-    
 	this._events();
-	this._.log('Object ' + self.identifier + ' initialized');
+	this._.log('Object ' + this.identifier + ' initialized'); // Sample use of utility function.
 };
 
 
 TheObject.prototype._events = function(){
 	var self = this;
 	
-	// events
+	this.instance.click(function(e){
+	    e.preventDefault();
+	    self._.log(self.settings.message); // Sample use of settings.
+	});
 };
 
 
-// additional object methods
+// Additional methods
 
 
-// utility functions
+// Utility functions
 TheObject.prototype._ = {
-    log : function(msg){ // logging
+    log : function(msg){
         if (typeof window.console.log === 'function'){
             console.log(msg);
-        } else {
-            alert(msg);
         }
     }
 };
 
+
 $(function(){
-	var objectCollection = [];
-	
-	$('.example').each(function(i){
-		objectCollection[i] = new TheObject({
-			element : $(this),
-			identifier : i
+	var objectCollection = $.map( $('.example'), function( instance, index ){
+		return new TheObject({
+			instance : instance,
+			identifier : index
 		});
 	});
 });
