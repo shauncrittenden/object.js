@@ -13,28 +13,22 @@ function TheObject(args){
 	this._init();
 }
 
-
 TheObject.prototype._init = function(){
 	this._events();
 	this._.log('Object ' + this.identifier + ' initialized'); // Sample use of utility function.
 };
 
-
 TheObject.prototype._events = function(){
 	var self = this;
 	
-	this.instance.click(function(e){
-	    e.preventDefault();
+	this.instance.click(function(){
 	    self._.log(self.settings.message); // Sample use of settings.
 	});
 };
 
-
 // Additional methods
 
-
-// Utility functions
-TheObject.prototype._ = {
+TheObject.prototype._ = { // Utility functions
     log : function(msg){
         if (typeof window.console.log === 'function'){
             console.log(msg);
@@ -42,12 +36,11 @@ TheObject.prototype._ = {
     }
 };
 
-
 $(function(){
-	var objectCollection = $.map( $('.example'), function( instance, index ){
+	$('.example').map(function(i, e){
 		return new TheObject({
-			instance : instance,
-			identifier : index
+			instance : e,
+			identifier : i
 		});
 	});
 });
