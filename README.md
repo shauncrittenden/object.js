@@ -7,14 +7,12 @@ A starting point for a clean object oriented piece of functionality. Dependency 
 --------------------------
 
 A new object instance is initialized per targeted DOM element
-
-	var objectCollection = [];
 	
 	$(function(){
-		var objectCollection = $.map( $('.example'), function( instance, index ){ // Replace .example with desired selector
-			return new TheObject({ // New object instance per element.
-				instance : instance, // Specific DOM element.
-				identifier : index // Unique identifier in collection.
+		$('.example').map(function(i, e){ // Replace .example with desired selector
+			return new TheObject({
+				instance : e, // Specific DOM element.
+				identifier : i // Unique identifier in collection.
 			});
 		});
 	});
