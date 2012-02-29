@@ -7,7 +7,7 @@ function TheObject(args){
 	
 	// Settings
 	this.settings = {
-	    message : 'ouch!'
+		message : 'settings.message from object instance ' + this.identifier
 	};
 	
 	this._init();
@@ -22,18 +22,18 @@ TheObject.prototype._events = function(){
 	var self = this;
 	
 	this.instance.click(function(){
-	    self._.log(self.settings.message); // Sample use of settings.
+		self._.log(self.settings.message); // Sample use of settings.
 	});
 };
 
 // Additional methods
 
 TheObject.prototype._ = { // Utility functions
-    log : function(msg){
-        if (typeof window.console.log === 'function'){
-            console.log(msg);
-        }
-    }
+	log : function(msg){
+		if (typeof window.console.log === 'function'){
+			console.log(msg);
+		}
+	}
 };
 
 $(function(){
